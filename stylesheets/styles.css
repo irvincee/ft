@@ -1,0 +1,29 @@
+iframe {
+	display: block;
+}
+
+p {
+	font-family: helvetica;
+	font-size: 40px;
+	color: #466e95;
+	font-weight: normal;
+	text-align: center;
+}
+
+.sub {
+	margin: auto;
+	text-align: center;
+}
+
+img {
+	width: 100px;
+}
+
+section {
+	margin: auto;
+	width: 500px;
+	padding: 20px;
+	height: auto;
+	border: 1px solid black;
+	box-shadow: 5px 5px 2px #888888;
+}
