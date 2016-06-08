@@ -27,3 +27,27 @@ section {
 	border: 1px solid black;
 	box-shadow: 5px 5px 2px #888888;
 }
+
+nav {
+	margin: auto;
+	padding-top: 100px;
+	text-align: center;
+	height: 100px;
+	width: 500px;	
+}
+
+nav a {
+	padding: 10px;
+	font-family: helvetica;
+	color: #466e95;
+	text-decoration: none;
+	font-size: 12px;
+}
+
+nav a:hover {
+	color: black;
+}
+
+nav a:active {
+	color: white;
+}
