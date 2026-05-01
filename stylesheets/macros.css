@@ -1,0 +1,525 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary:       #2563eb;
+  --color-primary-dark:  #1d4ed8;
+  --color-primary-light: #dbeafe;
+  --color-surface:       #ffffff;
+  --color-bg:            #f1f5f9;
+  --color-border:        #e2e8f0;
+  --color-text:          #1e293b;
+  --color-text-muted:    #64748b;
+  --color-error-bg:      #fef2f2;
+  --color-error-border:  #fca5a5;
+  --color-error-text:    #991b1b;
+
+  --color-protein: #3b82f6;
+  --color-carbs:   #f59e0b;
+  --color-fat:     #10b981;
+
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  40px;
+
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 12px rgb(0 0 0 / 0.1);
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.app-wrapper {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md);
+}
+
+/* ── Header ── */
+
+.app-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.app-header h1 {
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.app-subtitle {
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+  font-size: 1rem;
+}
+
+/* ── Form sections ── */
+
+.form-section {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-section legend {
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding: 0 var(--space-xs);
+}
+
+/* ── Field groups ── */
+
+.field-group {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+}
+
+.field-group + .field-group {
+  border-top: 1px solid var(--color-border);
+}
+
+.field-group > label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* ── Inputs ── */
+
+input[type="number"],
+select {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-surface);
+  transition: border-color 0.15s, box-shadow 0.15s;
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"]:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.15);
+}
+
+input.field-error {
+  border-color: var(--color-error-border);
+}
+
+/* ── Input with toggle ── */
+
+.input-with-toggle {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.input-with-toggle input[type="number"] {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Height inputs ── */
+
+.height-imperial {
+  display: flex;
+  gap: var(--space-xs);
+  flex: 1;
+  min-width: 0;
+}
+
+.height-imperial input {
+  flex: 1;
+  min-width: 0;
+}
+
+.height-metric {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Toggle buttons ── */
+
+.toggle-group {
+  display: flex;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.toggle-btn {
+  background: var(--color-surface);
+  border: none;
+  padding: var(--space-xs) var(--space-md);
+  font-size: 0.8rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.toggle-btn.active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.toggle-btn:not(.active):hover {
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}
+
+/* ── Radio groups ── */
+
+.radio-group {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.radio-label input[type="radio"] {
+  accent-color: var(--color-primary);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* ── Card-style goal radios ── */
+
+.card-radio-group {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.card-radio {
+  flex: 1;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-md);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: border-color 0.15s, background 0.15s;
+  text-align: center;
+  user-select: none;
+}
+
+.card-radio input[type="radio"] {
+  display: none;
+}
+
+.card-radio:has(input:checked) {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-weight: 600;
+}
+
+.card-radio:not(:has(input:checked)):hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+
+/* ── Unit label (static text beside input) ── */
+
+.unit-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Conditional weight target field ── */
+
+#weight-target-group {
+  transition: opacity 0.2s;
+}
+
+#weight-target-group.hidden {
+  display: none !important;
+}
+
+/* ── Form actions ── */
+
+.form-actions {
+  margin-top: var(--space-lg);
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn-primary:hover  { background: var(--color-primary-dark); }
+.btn-primary:active { transform: scale(0.99); }
+
+/* ── Error banner ── */
+
+.error-banner {
+  background: var(--color-error-bg);
+  border: 1px solid var(--color-error-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-error-text);
+  padding: var(--space-md);
+  margin-top: var(--space-md);
+  font-size: 0.9rem;
+}
+
+.error-banner p + p {
+  margin-top: var(--space-xs);
+}
+
+/* ── Results panel ── */
+
+.results-panel {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.results-panel h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-text-muted);
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+/* ── Calorie display ── */
+
+.calorie-card {
+  text-align: center;
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--space-lg);
+}
+
+.calorie-value {
+  display: block;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.calorie-label {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  margin-top: var(--space-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* ── Macro grid ── */
+
+.macro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.macro-card {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+#card-protein { border-top: 4px solid var(--color-protein); }
+#card-carbs   { border-top: 4px solid var(--color-carbs);   }
+#card-fat     { border-top: 4px solid var(--color-fat);     }
+
+.macro-grams {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+#card-protein .macro-grams { color: var(--color-protein); }
+#card-carbs   .macro-grams { color: var(--color-carbs);   }
+#card-fat     .macro-grams { color: var(--color-fat);     }
+
+.macro-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+}
+
+.macro-desc {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+  line-height: 1.4;
+}
+
+/* ── Proportional bar ── */
+
+.macro-bar {
+  display: flex;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: var(--space-lg);
+  background: var(--color-border);
+}
+
+.bar-segment {
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+}
+
+.bar-protein { background: var(--color-protein); }
+.bar-carbs   { background: var(--color-carbs);   }
+.bar-fat     { background: var(--color-fat);     }
+
+/* ── Bar legend ── */
+
+.bar-legend {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+  margin-bottom: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Results note ── */
+
+.results-note {
+  background: #f8fafc;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+}
+
+/* ── Recalculate button ── */
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  transition: background 0.15s;
+}
+
+.btn-secondary:hover { background: var(--color-primary-light); }
+
+/* ── Utility ── */
+
+.hidden { display: none !important; }
+
+/* ── Responsive ── */
+
+@media (max-width: 520px) {
+  .field-group {
+    grid-template-columns: 1fr;
+  }
+
+  .macro-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .app-wrapper {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .results-panel {
+    padding: var(--space-lg);
+  }
+
+  .card-radio-group {
+    flex-direction: column;
+  }
+}
